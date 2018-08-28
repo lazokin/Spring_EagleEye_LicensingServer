@@ -1,22 +1,47 @@
 package com.lazokin.eagleeye.licensing.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "licenses")
 public class License {
 	
-	private String id;
-	private String productName;
-	private String licenseType;
+	@Id
+	@Column(name = "licende_id", nullable = false)
+	private String licenseId;
+	
+	@Column(name = "organisation_id", nullable = false)
 	private String organisationId;
 	
-	public String getId() {
-		return id;
+	@Column(name = "product_name", nullable = false)
+	private String productName;
+	
+	@Column(name = "comment", nullable = true)
+	private String comment;
+	
+	public License() {
+		
+	}
+
+	public License(String licenseId, String organisationId, String productName) {
+		this.licenseId = licenseId;
+		this.organisationId = organisationId;
+		this.productName = productName;
+	}
+
+	public String getLicenseId() {
+		return licenseId;
 	}
 	
-	public void setId(String id) {
-		this.id = id;
+	public void setLicenseId(String licenseId) {
+		this.licenseId = licenseId;
 	}
 	
-	public License withId(String id) {
-		setId(id);
+	public License withLicenseId(String id) {
+		setLicenseId(id);
 		return this;
 	}
 	
@@ -33,19 +58,6 @@ public class License {
 		return this;
 	}
 	
-	public String getLicenseType() {
-		return licenseType;
-	}
-	
-	public void setLicenseType(String licenseType) {
-		this.licenseType = licenseType;
-	}
-	
-	public License withLicenseType(String licenseType) {
-		setLicenseType(licenseType);
-		return this;
-	}
-	
 	public String getOrganisationId() {
 		return organisationId;
 	}
@@ -56,6 +68,19 @@ public class License {
 	
 	public License withOrganisationId(String organisationId) {
 		setOrganisationId(organisationId);
+		return this;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	
+	public License withComment(String comment) {
+		setComment(comment);
 		return this;
 	}
 	
